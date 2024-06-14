@@ -57,3 +57,17 @@ n: the count of vertices.
 Result = 5037
 
 Because the path is from 0 to 1 and from 1 to 3 = 3245 + 1792 = 5037.
+
+# How to run tests?
+use the following command
+
+```
+env RUST_TEST_NOCAPTURE=1; cargo test
+```
+
+for release test use the following command
+
+```
+env RUST_TEST_NOCAPTURE=1; cargo test --release
+```
+
