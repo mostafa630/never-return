@@ -1,6 +1,6 @@
 use solution::Landmark;
-
 mod solution;
+
 
 fn print_case(landmarks: Vec<Landmark>, trails: Vec<(i32, i32, i32)>, expected: i32, output: i32){
     println!("Landmarks: ");
@@ -21,14 +21,14 @@ fn print_case(landmarks: Vec<Landmark>, trails: Vec<(i32, i32, i32)>, expected: 
     }
 }
 
-#[cfg(test)]
+
 mod tests {
     use super::*; // Import functions from outer scope
     use std::fs::File;
     use std::io::{self, BufReader, BufRead};
     use std::time::Instant;
-    #[test]
-    fn run_all_tests_sequentially() {
+    
+    pub fn run_all_tests_sequentially() {
         trial_tests();
         sample_tests().unwrap();
         complete_tests().unwrap();
@@ -36,6 +36,7 @@ mod tests {
 
     fn trial_tests(){
         {
+            println!("new test \n");
             let n = 5;
             let mut landmarks: Vec<solution::Landmark> = Vec::new();
 
@@ -61,6 +62,7 @@ mod tests {
         }
 
         {
+            println!("new test \n");
             let n = 6;
             let mut landmarks: Vec<solution::Landmark> = Vec::new();
 
@@ -88,6 +90,7 @@ mod tests {
         }
 
         {
+            println!("new test \n");
             let n = 4;
             let mut landmarks: Vec<solution::Landmark> = Vec::new();
 
@@ -296,5 +299,6 @@ mod tests {
 
 
 fn main() {
-    println!("hello world")
+    tests::run_all_tests_sequentially();
 }
+
