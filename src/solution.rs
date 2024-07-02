@@ -44,29 +44,28 @@ pub fn required_function(landmarks: Vec<Landmark>, trails: Vec<(i32, i32, i32)>,
 }
 
 fn construct_graph(graph :&mut Vec<Vec<(i32 , i32)>> , landmarks: &Vec<Landmark> , trails: &Vec<(i32, i32, i32)>){
-
+     //node1 represent source , node2 represent destenation  node1------>node2
+     //node0 --> starting point
     for (node1 ,node2 ,cost) in trails {
-        let x0 =  landmarks[0].x;
-        let y0 = landmarks[0].y;
+        //node0 info
+        let node_0_coordinates =(landmarks[0].x ,landmarks[0].y);
         //node1 info
         let id1 = *node1 as usize;
-        let x1 = landmarks[id1].x;
-        let y1 = landmarks[id1].y;
+        let node_1_coordinates =(landmarks[id1].x ,landmarks[id1].y);
         //node2 info
         let id2 = *node2 as usize;
-        let x2 = landmarks[id2].x;
-        let y2 = landmarks[id2].y;
+        let node_2_coordinates =(landmarks[id2].x ,landmarks[id2].y);
         //calculate distance from node 0 to node1 
-        let term1:f32 = (x0-x1).pow(2) as f32;
-        let term2 :f32 = (y0-y1).pow(2) as f32;
-        let dist_0_to_node1 =(term1 + term2).sqrt();
+        let term1:f32 = (node_0_coordinates.0-node_1_coordinates.0).pow(2) as f32;
+        let term2:f32 = (node_0_coordinates.1-node_1_coordinates.1).pow(2) as f32;
+        let dist_node0_to_node1 =(term1 + term2).sqrt();
         //calculate distance from node 0 to node2
-        let term1:f32 = (x0-x2).pow(2) as f32;
-        let term2 :f32 = (y0-y2).pow(2) as f32;
-        let dist_0_to_node2 =(term1 + term2).sqrt();
+        let term1:f32 = (node_0_coordinates.0-node_2_coordinates.0).pow(2) as f32;
+        let term2:f32 = (node_0_coordinates.1-node_2_coordinates.1).pow(2) as f32;
+        let dist_node0_to_node2 =(term1 + term2).sqrt();
         //construct the graph edges
         let cost = *cost;
-        if dist_0_to_node1 < dist_0_to_node2 {
+        if dist_node0_to_node1 < dist_node0_to_node2 {
             graph[id1].push((*node2 ,cost));
         }
         else {
